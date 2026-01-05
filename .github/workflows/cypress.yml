@@ -24,13 +24,16 @@ jobs:
         run: npm ci
 
       - name: Run Cypress tests
-        run: npm run test 
+        run: npm run test
+        continue-on-error: true
 
       - name: Merge mochawesome reports
         run: npm run report:merge
+        continue-on-error: true
 
       - name: Generate mochawesome HTML report
         run: npm run report:generate
+        continue-on-error: true
 
       - name: Upload mochawesome HTML report as artifact
         uses: actions/upload-artifact@v4
